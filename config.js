@@ -1,6 +1,5 @@
-// Imamtech configuration placeholder.
-// Add your real Supabase URL and ANON key after creating the project.
+// Imamtech configuration
 window.IMAMTECH_CONFIG = {
-  SUPABASE_URL: '',
-  SUPABASE_ANON_KEY: ''
+  SUPABASE_URL: 'https://frdqsydicrmaygwmwusv.supabase.co',
+  SUPABASE_ANON_KEY: 'sb_publishable_g6xVbUOe5AV_GVJusNCnqQ_szgB9XnB'
 };
