@@ -1,0 +1,3 @@
+-- Run after creating the bucket named imamtech-files.
+-- Keep the bucket private. Storage access policies should be added after deciding
+-- whether linked devices may upload, download, or only the Main Device may access files.

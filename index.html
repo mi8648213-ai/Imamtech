@@ -1,14 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07151d">
+  <title>Imamtech — Your Data. All Devices. One Link.</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="loginView" class="login-screen">
+    <div class="login-card">
+      <img src="assets/imamtech-logo.svg" class="login-logo" alt="Imamtech">
+      <div class="portrait-strip">
+        <img src="assets/portrait-black-shirt-background-enhanced.png" alt="Portrait">
+        <img src="assets/portrait-yellow-kaftan.png" alt="Portrait">
+        <img src="assets/portrait-white-kaftan.png" alt="Portrait">
+      </div>
+      <h1 id="loginCardTitle">One account. Multiple devices.</h1>
+      <p id="loginCardText">Securely connect your phones and computer through one Imamtech account.</p>
+      <button class="google-btn" id="loginBtn"><span class="g">M</span> Sign in to Imamtech</button>
+      <small>Secure email sign-in is used when the backend is configured.</small>
+    </div>
+  </div>
 
-    <h1>Welcome to My Website</h1>
-    <p>This is my first website created with Termux.</p>
+  <div id="appView" class="app hidden">
+    <aside class="sidebar">
+      <div class="brand"><img src="assets/imamtech-logo.svg" alt="Imamtech"></div>
+      <nav>
+        <button class="nav active" data-page="home">⌂ <span>Home</span></button>
+        <button class="nav" data-page="devices">▣ <span>Devices</span></button>
+        <button class="nav" data-page="files">▤ <span>Files</span></button>
+        <button class="nav" data-page="contacts">♙ <span>Contacts / Numbers</span></button>
+        <button class="nav" data-page="sync">↻ <span>Sync</span></button>
+        <button class="nav" data-page="settings">⚙ <span>Settings</span></button>
+      </nav>
+      <div class="account-mini"><div class="avatar">M</div><div><b>mi8648213@gmail.com</b><small>Main Device</small></div></div>
+      <button class="signout" id="signoutBtn">↪ Sign Out</button>
+    </aside>
 
+    <main class="main">
+      <header class="topbar">
+        <button class="menu" id="menuBtn">☰</button>
+        <div><h2 id="pageTitle">Home</h2><span class="status"><i></i> Connected</span></div>
+        <button class="share" id="shareBtn">Share Link</button>
+      </header>
+
+      <section id="home" class="page active-page">
+        <div class="hero">
+          <div><span class="eyebrow">MAIN DEVICE</span><h1>Welcome back,<br><strong>Imamtech</strong></h1><p>Your connected devices, files and contacts in one place.</p></div>
+          <img src="assets/portrait-black-shirt-background-enhanced.png" alt="Portrait">
+        </div>
+        <div class="stats">
+          <div><b>3</b><span>Linked Devices</span></div><div><b>12</b><span>Files</span></div><div><b>18</b><span>Contacts</span></div><div><b>100%</b><span>Sync Status</span></div>
+        </div>
+        <div class="grid3">
+          <article class="card"><div class="card-head"><h3>Linked Devices</h3><button data-page-jump="devices">View All</button></div><div id="deviceMini"></div></article>
+          <article class="card"><div class="card-head"><h3>Recent Files</h3><button data-page-jump="files">View All</button></div><div id="fileMini"></div></article>
+          <article class="card"><div class="card-head"><h3>Sync Status</h3></div><div class="sync-circle">✓</div><p class="center">All devices synced</p><button class="primary full" id="syncHome">Sync Now</button></article>
+        </div>
+      </section>
+
+      <section id="devices" class="page">
+        <div class="section-head"><div><h1>Linked Devices</h1><p>Your main device can see the devices linked through your secure invite link.</p></div><button class="primary" id="newLink">Create Share Link</button></div>
+        <div class="device-grid" id="deviceGrid"></div>
+        <div class="card share-card"><h3>How linking works</h3><p>1. Create an invite link on the Main Device.</p><p>2. Send it through WhatsApp, Telegram or another app.</p><p>3. Open the link on the other device and confirm.</p><p class="muted">No manual device code is used in this design.</p></div>
+      </section>
+
+      <section id="files" class="page">
+        <div class="section-head"><div><h1>Files</h1><p>Photos, videos, documents and audio for your linked devices.</p></div><label class="primary upload">Upload File<input type="file" id="fileInput" multiple hidden></label></div>
+        <div class="file-toolbar"><input id="fileSearch" placeholder="Search files..."><select id="fileFilter"><option>All</option><option>Photos</option><option>Videos</option><option>Documents</option><option>Audio</option></select></div>
+        <div class="file-list" id="fileList"></div>
+      </section>
+
+      <section id="contacts" class="page">
+        <div class="section-head"><div><h1>Contacts / Numbers</h1><p>Contacts can be stored and synchronized across your linked devices.</p></div><button class="primary" id="addContact">Add Contact</button></div>
+        <div class="contacts-card card"><input id="contactSearch" placeholder="Search contacts or numbers..."><div id="contactsList"></div></div>
+        <div class="notice">Automatic Android call-history syncing will require a companion Android app and explicit call-log permission. This web prototype does not read call logs.</div>
+      </section>
+
+      <section id="sync" class="page">
+        <div class="sync-panel card"><div class="big-sync">↻</div><h1>Sync Center</h1><p id="syncText">All selected data is synchronized.</p><div class="progress"><span id="progress"></span></div><button class="primary" id="syncBtn">Sync Now</button></div>
+        <div class="sync-items card"><div>Files <b>✓</b></div><div>Contacts / Numbers <b>✓</b></div><div>Device status <b>✓</b></div><div>Settings <b>✓</b></div></div>
+      </section>
+
+      <section id="settings" class="page">
+        <div class="section-head"><div><h1>Settings</h1><p>Manage your Imamtech account and device behavior.</p></div></div>
+        <div class="settings-card card">
+          <div class="setting"><div><b>Account</b><small>mi8648213@gmail.com</small></div><span>Google</span></div>
+          <div class="setting"><div><b>Auto Sync</b><small>Keep linked devices updated automatically.</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div>
+          <div class="setting"><div><b>Notifications</b><small>Show sync and linking notifications.</small></div><label class="switch"><input type="checkbox" checked><span></span></label></div>
+          <div class="setting"><div><b>Main Device</b><small>This device is the central dashboard.</small></div><span class="pill">Active</span></div>
+          <button class="danger" id="removeDemo">Remove demo data</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast"></div>
+  <div id="linkModal" class="modal hidden"><div class="modal-card"><button class="close" id="closeModal">×</button><h2>Your Imamtech invite link</h2><p>Send this link to your other phone or computer.</p><div class="linkbox" id="linkValue"></div><button class="primary full" id="copyLink">Copy Link</button><small>No manual code required for the link flow.</small></div></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

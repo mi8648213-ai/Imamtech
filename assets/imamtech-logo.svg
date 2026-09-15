@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140">
+<rect width="520" height="140" rx="28" fill="#07151d"/>
+<path d="M73 91c-19 0-34-13-34-30 0-16 13-29 29-30 8-17 24-27 43-27 22 0 41 15 47 36 16 1 29 12 29 28 0 17-14 31-32 31H73Z" fill="none" stroke="#21e6a0" stroke-width="10"/>
+<path d="M111 85V45m0 0-16 16m16-16 16 16" fill="none" stroke="#21e6a0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="205" y="88" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#f4fbff">IMAM</text>
+<text x="356" y="88" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#21e6a0">TECH</text>
+</svg>
