@@ -65,15 +65,10 @@ async function processJoin(){
 }
 async function joinDevice(token){
  if(!supabaseClient){toast('Backend is not configured yet.');return}
- const hash=await sha256(token);
- const {data:links,error}=await supabaseClient.from('device_links').select('*').eq('token_hash',hash).is('used_at',null).gt('expires_at',new Date().toISOString()).limit(1);
- if(error||!links?.length){toast('This link is invalid or expired.');return}
- const link=links[0];
  const deviceName=prompt('Name this device:',navigator.userAgent.includes('Mobile')?'My Phone':'My Computer')||'Linked Device';
  const type=navigator.userAgent.includes('Mobile')?'Android Phone':'Computer';
- const {error:insertError}=await supabaseClient.from('devices').insert({owner_id:link.owner_id,name:deviceName,type,role:'Linked Device',online:true,last_seen:new Date().toISOString()});
- if(insertError){toast('Could not join device.');return}
- await supabaseClient.from('device_links').update({used_at:new Date().toISOString()}).eq('id',link.id);
+ const {error}=await supabaseClient.rpc('join_device',{p_token:token,p_device_name:deviceName,p_device_type:type});
+ if(error){toast('This link is invalid or expired.');return}
  history.replaceState({},'',location.pathname);
  $('#loginView').classList.add('hidden'); $('#appView').classList.remove('hidden');
  toast('Device linked successfully');
