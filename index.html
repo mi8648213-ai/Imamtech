@@ -17,8 +17,21 @@
         <img src="assets/portrait-white-kaftan.png" alt="Portrait">
       </div>
       <h1 id="loginCardTitle">One account. Multiple devices.</h1>
-      <p id="loginCardText">Securely connect your phones and computer through one Imamtech account.</p>
-      <button class="google-btn" id="loginBtn"><span class="g">M</span> Sign in to Imamtech</button>
+      <p id="loginCardText">Sign in with the same email on every phone and computer. Everything syncs automatically — no join link needed.</p>
+
+      <div id="emailStep">
+        <input type="email" id="loginEmail" class="login-input" placeholder="you@example.com" autocomplete="email" inputmode="email">
+        <button class="google-btn" id="sendCodeBtn">Send sign-in code</button>
+      </div>
+
+      <div id="codeStep" class="hidden">
+        <p class="muted" id="codeSentText">Enter the 6-digit code sent to your email.</p>
+        <input type="text" id="loginCode" class="login-input code-input" placeholder="123456" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+        <button class="google-btn" id="verifyCodeBtn">Verify &amp; Sign in</button>
+        <small><a href="#" id="resendCode">Change email / resend code</a></small>
+      </div>
+
+      <button class="google-btn" id="loginBtn" style="display:none"><span class="g">M</span> Sign in to Imamtech</button>
       <small>Secure email sign-in is used when the backend is configured.</small>
     </div>
   </div>
@@ -61,9 +74,9 @@
       </section>
 
       <section id="devices" class="page">
-        <div class="section-head"><div><h1>Linked Devices</h1><p>Your main device can see the devices linked through your secure invite link.</p></div><button class="primary" id="newLink">Create Share Link</button></div>
+        <div class="section-head"><div><h1>Linked Devices</h1><p>Every device signed in with your account appears here automatically.</p></div><button class="primary" id="newLink">Create Share Link</button></div>
         <div class="device-grid" id="deviceGrid"></div>
-        <div class="card share-card"><h3>How linking works</h3><p>1. Create an invite link on the Main Device.</p><p>2. Send it through WhatsApp, Telegram or another app.</p><p>3. Open the link on the other device and confirm.</p><p class="muted">No manual device code is used in this design.</p></div>
+        <div class="card share-card"><h3>How this works</h3><p>1. Open Imamtech on your phone or computer.</p><p>2. Sign in with the same email and enter the code sent to you.</p><p>3. That device appears here instantly, and your files/contacts sync everywhere.</p><p class="muted">Use "Create Share Link" only if you want to invite a device that won't use your email directly.</p></div>
       </section>
 
       <section id="files" class="page">
